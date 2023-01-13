@@ -1,10 +1,9 @@
 name: OneClickInstall scripts testing
 
 on:
-  pull_request:
-    types: [opened, reopened, edited]
+  push: 
     paths-ignore:
-      - '.github/**'
+            #- '.github/**'
       - 'tests/**'
       - '**/README.md'
 
@@ -27,15 +26,15 @@ jobs:
       fail-fast: false
       matrix:
         name: 
-          - gha-runner-centos7-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-centos8s-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-centos7-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-centos8s-${{ github.run_id }}-${{ github.run_number }}
           - gha-runner-centos9s-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian9-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian10-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian11-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu1804-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu2004-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu2204-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian9-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian10-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian11-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu1804-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu2004-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu2204-${{ github.run_id }}-${{ github.run_number }}
     
     steps:
     # Install Doctl
@@ -97,15 +96,15 @@ jobs:
       fail-fast: false
       matrix:
         boxes: 
-          - centos7
-          - centos8s
+        #- centos7
+        # - centos8s
           - centos9s
-          - debian9
-          - debian10
-          - debian11
-          - ubuntu1804
-          - ubuntu2004
-          - ubuntu2204
+        #- debian9
+        #- debian10
+        #- debian11
+        #- ubuntu1804
+        #- ubuntu2004
+        #- ubuntu2204
 
     steps:
     - name: Checkout code      
@@ -140,7 +139,7 @@ jobs:
               vagrant destroy --force
 
     - name: Install from local scripts
-      if: ${{ github.event_name == 'pull_request' }}
+      if: ${{ github.event_name == 'push' }}
       uses: nick-fields/retry@v2
       with:
         max_attempts: 2
@@ -168,15 +167,15 @@ jobs:
       fail-fast: false
       matrix:
         name: 
-          - gha-runner-centos7-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-centos8s-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-centos7-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-centos8s-${{ github.run_id }}-${{ github.run_number }}
           - gha-runner-centos9s-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian9-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian10-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-debian11-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu1804-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu2004-${{ github.run_id }}-${{ github.run_number }}
-          - gha-runner-ubuntu2204-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian9-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian10-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-debian11-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu1804-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu2004-${{ github.run_id }}-${{ github.run_number }}
+        #- gha-runner-ubuntu2204-${{ github.run_id }}-${{ github.run_number }}
         
     steps:
     # Install Doctl
