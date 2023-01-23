@@ -16,7 +16,7 @@ env:
   RUNNER_REGION: fra1
   RUNNER_SIZE: s-4vcpu-8gb-intel
 
-
+jobs:
   vagrant-up:
     needs: spin-up
     name: "Run tests on ${{ matrix.boxes }}"
