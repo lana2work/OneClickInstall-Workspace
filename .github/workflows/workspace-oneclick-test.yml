@@ -26,14 +26,14 @@ jobs:
       matrix:
         boxes: 
           - centos7
-        # - centos8s
-        #- centos9s
-        #- debian9
-        #- debian10
-        #- debian11
-        #- ubuntu1804
-        #- ubuntu2004
-        #- ubuntu2204
+          - centos8s
+          - centos9s
+          - debian9
+          - debian10
+          - debian11
+          - ubuntu1804
+          - ubuntu2004
+          - ubuntu2204
 
     steps:
     - name: Checkout code      
